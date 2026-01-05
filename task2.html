@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Events with CSS</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #fce4ec);
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            width: 600px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1976d2;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0d47a1;
+        }
+
+        .box {
+            width: 100%;
+            height: 100px;
+            background-color: #90caf9;
+            text-align: center;
+            line-height: 100px;
+            margin-top: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 95%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #999;
+            border-radius: 5px;
+        }
+
+        .message {
+            margin-top: 10px;
+            color: #d32f2f;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        // load event
+        window.onload = function () {
+            document.getElementById("status").innerHTML = "Page Loaded Successfully";
+        }
+
+        function clickEvent() {
+            alert("Click Event Triggered");
+        }
+
+        function dblClickEvent() {
+            alert("Double Click Event Triggered");
+        }
+
+        function mouseOverEvent() {
+            document.getElementById("box").style.backgroundColor = "#ffcc80";
+        }
+
+        function mouseOutEvent() {
+            document.getElementById("box").style.backgroundColor = "#90caf9";
+        }
+
+        function keyDownEvent() {
+            document.getElementById("keymsg").innerHTML = "Key Down Event";
+        }
+
+        function keyUpEvent() {
+            document.getElementById("keymsg").innerHTML = "Key Up Event";
+        }
+
+        function focusEvent() {
+            document.getElementById("name").style.backgroundColor = "#c8e6c9";
+        }
+
+        function blurEvent() {
+            document.getElementById("name").style.backgroundColor = "white";
+        }
+
+        function submitEvent() {
+            alert("Form Submitted Successfully");
+        }
+    </script>
+</head>
+
+<body>
+
+    <h2>JavaScript Events Demo (With CSS)</h2>
+
+    <div class="container">
+
+        <p id="status" class="message"></p>
+
+        <!-- click & dblclick -->
+        <button onclick="clickEvent()">Click</button>
+        <button ondblclick="dblClickEvent()">Double Click</button>
+
+        <!-- mouse events -->
+        <div id="box" class="box"
+             onmouseover="mouseOverEvent()"
+             onmouseout="mouseOutEvent()">
+            Mouse Over / Out
+        </div>
+
+        <!-- keyboard events -->
+        <input type="text"
+               placeholder="Type something..."
+               onkeydown="keyDownEvent()"
+               onkeyup="keyUpEvent()">
+
+        <p id="keymsg" class="message"></p>
+
+        <!-- form events -->
+        <form onsubmit="submitEvent(); return false;">
+            <input type="text" id="name"
+                   placeholder="Enter your name"
+                   onfocus="focusEvent()"
+                   onblur="blurEvent()">
+
+            <br><br>
+            <button type="submit">Submit</button>
+        </form>
+
+    </div>
+
+</body>
+</html>
