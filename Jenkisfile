@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t auto-deploy-app .'
+            }
+        }
+
+        stage('Run Application') {
+            steps {
+                sh 'docker run -d -p 3000:3000 auto-deploy-app'
+            }
+        }
+
+        stage('Deployment Status') {
+            steps {
+                echo 'Application Deployed Successfully During High Traffic'
+            }
+        }
+    }
+}
