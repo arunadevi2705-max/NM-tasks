@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Automated Deployment System</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f0f4f8;
+            text-align: center;
+        }
+        .box {
+            background: white;
+            width: 350px;
+            margin: 100px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>High Traffic Monitor</h2>
+    <p>Current Traffic</p>
+    <h1 id="traffic">0</h1>
+    <button onclick="checkTraffic()">Check Traffic</button>
+</div>
+
+<script>
+function checkTraffic() {
+    fetch("http://localhost:3000/traffic")
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("traffic").innerHTML = data.traffic;
+    });
+}
+</script>
+
+</body>
+</html>
